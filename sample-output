@@ -1,0 +1,43 @@
+Western Digital 1.5TB SATA disk
+Model Number: WDC WD1501FASS-00W2B0
+
+utos@node2:~/tmp$ sudo dd if=/dev/sdb8 of=/dev/null bs=32768 count=102400
+102400+0 records in
+102400+0 records out
+3355443200 bytes (3.4 GB) copied, 22.9728 s, 146 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 0
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 0
+
+	read: 3200.00 MBs, time: 22.54 s, throughput: 141.98 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 1000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 1000
+
+	read: 3200.00 MBs, time: 22.08 s, throughput: 144.95 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 10000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 10000
+
+	read: 3200.00 MBs, time: 17.99 s, throughput: 177.85 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 20000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 20000
+
+	read: 3200.00 MBs, time: 13.52 s, throughput: 236.66 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 40000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 40000
+
+	read: 3200.00 MBs, time: 4.64 s, throughput: 690.06 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 60000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 60000
+
+	read: 3200.00 MBs, time: 4.52 s, throughput: 708.07 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 100000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 100000
+
+	read: 3200.00 MBs, time: 1.54 s, throughput: 2071.97 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 200000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 200000
+
+	read: 3200.00 MBs, time: 1.58 s, throughput: 2031.52 MB/s
+utos@node2:~/tmp$ sudo ./rr -i /dev/sdb8 -c 102400 -n 400000
+inputdevice: /dev/sdb8, blocksize: 32768, blocks: 102400, iteratenum: 400000
+
+	read: 3200.00 MBs, time: 1.57 s, throughput: 2033.28 MB/s

@@ -1,0 +1,24 @@
+rr is a tiny program used to show the effect of caches in disks. Sometimes,
+the read throughput of a disk you measure might be (much) higher than the 
+sequential read of dd and you might be confused about that. rr is to explain 
+that phenomenon for you.
+
+dd tells you the maximum sustained sequential read you can get from a disk. 
+What dd does is it keeps reading from a device in blocksize. Since disks are 
+much slower than CPUs, they are kept spinning all the time in order to feed the 
+data requested by CPUs. And that basically is the maximum sustained sequential 
+read you can get from your disk. The reason why sometimes you get a (much) 
+higher read throughput from your disk is that data is cached in disk caches 
+before it is asked from CPUs. So, when CPUs do ask for the data, it is 
+transferred to CPUs much faster than reading from the disk itself. rr is 
+exactly such a program to show this effect.
+
+With above understanding, it is now easy to understand the rr program itself.
+What it does is that before issuing the next read, it waits for some time, by
+doing a simple for loop. During this wait period, the disk will fetch some data 
+into its cache. Most of the time, sequential prefetching is used in disks. So, 
+when the next read does come, then the data is already in the disk cache and it
+will be transferred much faster. And the more time you wait between two reads,
+the more data will be prefetched and the higher read throughput you will get. 
+See sample-output for more information about the read throughput I gotten from a 
+Western Digital disk we have in Emulab.
